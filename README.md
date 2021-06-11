@@ -66,3 +66,6 @@ https://github.com/KCL-Planning/ROSPlan_interface_COLA2
 
 - Action interfaces for piloting a quadrotor from Jindrich Vodrazka, (takeoff, land, fly_square, and fly_waypoint).
 https://github.com/fairf4x/ROSPlan_interface_quadrotor
+
+## Important modification than basic ROSPlan
+- More planners added: popf2, optic-clp, Metric-FF
