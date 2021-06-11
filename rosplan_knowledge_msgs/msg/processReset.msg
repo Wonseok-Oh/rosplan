@@ -1,0 +1,2 @@
+string domain_path
+string problem_path

@@ -1,0 +1,74 @@
+digraph plan {
+0[ label="plan_start",style=filled,fillcolor=black,fontcolor=white];
+1[ label="undock_start
+(kenny,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+2[ label="undock_end
+(kenny,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+3[ label="localise_start
+(kenny)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+4[ label="localise_end
+(kenny)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+5[ label="goto_waypoint_start
+(kenny,wp0,wp1)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+6[ label="goto_waypoint_end
+(kenny,wp0,wp1)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+7[ label="goto_waypoint_start
+(kenny,wp1,wp2)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+8[ label="goto_waypoint_end
+(kenny,wp1,wp2)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+9[ label="goto_waypoint_start
+(kenny,wp2,wp3)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+10[ label="goto_waypoint_end
+(kenny,wp2,wp3)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+11[ label="goto_waypoint_start
+(kenny,wp3,wp4)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+12[ label="goto_waypoint_end
+(kenny,wp3,wp4)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+13[ label="goto_waypoint_start
+(kenny,wp4,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+14[ label="goto_waypoint_end
+(kenny,wp4,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+15[ label="dock_start
+(kenny,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+16[ label="dock_end
+(kenny,wp0)",style=filled,fillcolor=darkolivegreen,fontcolor=white];
+"0" -> "1" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"1" -> "2" [ label="[10, 10]" , penwidth=2, color="black"]
+"0" -> "2" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "3" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"3" -> "4" [ label="[60, 60]" , penwidth=2, color="black"]
+"0" -> "4" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "5" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "5" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"5" -> "6" [ label="[60, 60]" , penwidth=2, color="black"]
+"0" -> "6" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"6" -> "7" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "7" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "7" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"7" -> "8" [ label="[60, 60]" , penwidth=2, color="black"]
+"0" -> "8" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"8" -> "9" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "9" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "9" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"9" -> "10" [ label="[60, 60]" , penwidth=2, color="black"]
+"0" -> "10" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"10" -> "11" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "11" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "11" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"11" -> "12" [ label="[60, 60]" , penwidth=2, color="black"]
+"0" -> "12" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"12" -> "13" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "13" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "13" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"13" -> "14" [ label="[60, 60]" , penwidth=2, color="black"]
+"5" -> "14" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"14" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"2" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"12" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"10" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"8" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"6" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"4" -> "15" [ label="[0.001, inf]" , penwidth=2, color="black"]
+"15" -> "16" [ label="[30, 30]" , penwidth=2, color="black"]
+"1" -> "16" [ label="[0.001, inf]" , penwidth=2, color="black"]
+}

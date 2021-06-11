@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rosplan_tutorial</name>
+  <version>1.0.0</version>
+  <description>
+    ROSPlan tutorial launch package
+  </description>
+  <license>BSD</license>
+  <author email="ooww0123@kaist.ac.kr">Wonseok Oh</author>
+  <maintainer email="ooww0123@kaist.ac.kr">Wonseok Oh</maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

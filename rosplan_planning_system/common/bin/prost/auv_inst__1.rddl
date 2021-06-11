@@ -1,0 +1,39 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// A domain for turtlebot exploration, demo for ROSPlan.
+//
+// Author: Gerard Canal (gcanal@iri.upc.edu)
+// 
+// Based on the demo domain for the turtlebot. 
+// Thanks to Florian Geißer, Thomas Keller and Scott Sanner for the help.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+non-fluents nf_auv_inst1 {
+	domain = auv_domain;
+	objects {
+		//waypoint: {wp0, wp1, wp2, wp3, wp4, wp5, wp6, wp7, wp8, wp9, wp10};
+		waypoint: {wp0, wp1};
+        robot: {wamv};
+	};
+	
+	non-fluents {
+		DOCK_AT(wp0);
+		WINDY(wp0) = 0.0;
+		WINDY(wp1) = 0.25;
+		//WINDY(wp2) = 0.5;
+	};
+}
+
+instance auv_inst__1 {
+	domain = auv_domain;
+	non-fluents = nf_auv_inst1;
+	init-state {
+		robot_at(wamv, wp0);
+		docked(wamv);
+	};
+
+	max-nondef-actions = 1;
+	horizon  = 20;
+	discount = 1.0;
+}

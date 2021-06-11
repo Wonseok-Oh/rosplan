@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- arguments -->
+	<arg name="domain_path"	default="$(find rosplan_demos)/common/auv_domain.rddl" />
+	<arg name="problem_path"	default="$(find rosplan_demos)/common/auv_inst.rddl" />
+
+	<!-- knowledge base -->
+	<node name="rosplan_knowledge_base" pkg="rosplan_knowledge_base" type="knowledgeBase" respawn="false" output="screen">
+		<param name="domain_path" value="$(arg domain_path)" />
+		<param name="problem_path" value="$(arg problem_path)" />
+		<!-- conditional planning flags -->
+		<param name="use_unknowns" value="false" />
+	</node>
+
+	<!-- problem generation -->
+	<include file="$(find rosplan_planning_system)/launch/includes/problem_interface.launch">
+		<arg name="knowledge_base"   value="rosplan_knowledge_base" />
+		<arg name="domain_path"      value="$(arg domain_path)" />
+		<arg name="problem_path"     value="$(find rosplan_demos)/common/problem.rddl" />
+		<arg name="problem_topic"    value="problem_instance" />
+		<arg name="planning_language" default="RDDL" />
+	</include>
+	
+	<node name="rosplan_plan_dispatcher" pkg="rosplan_planning_system" type="pddl_simple_plan_dispatcher" output="screen">
+            <param name="knowledge_base"        value="rosplan_knowledge_base" />
+            <param name="plan_topic"            value="complete_plan" />
+            <param name="action_dispatch_topic" value="action_dispatch" />
+            <param name="action_feedback_topic" value="action_feedback" />
+            <param name="ippc_server_port"      value="3234" />
+            <param name="compute_rewards"       value="true" />
+	</node>
+
+	<node name="rddlsim_planner_interface" pkg="rosplan_planning_system" type="rddlsim_planner_interface" output="screen">
+		<param name="use_problem_topic"    value="true" />
+		<param name="problem_topic"        value="/rosplan_problem_interface/problem_instance" />
+		<param name="planner_topic"        value="planner_output" />
+		<param name="domain_path"          value="$(arg domain_path)" />
+		<param name="problem_path"         value="$(find rosplan_demos)/common/problem.rddl" />
+		<param name="data_path"            value="$(find rosplan_demos)/common/" />
+		<param name="planner_command"      value="$(find rosplan_planning_system)/common/bin/prost/run_prost.sh $(arg domain_path) $(arg problem_path) &quot;[PROST -s 1 -se [IPPC2014]]&quot;" />
+	</node>
+
+	
+	<!-- planner interface -->
+<!-- 	<include file="$(find rosplan_planning_system)/launch/includes/planner_interface.launch">
+		<arg name="use_problem_topic"    value="true" />
+		<arg name="problem_topic"        value="/rosplan_problem_interface/problem_instance" />
+		<arg name="planner_topic"        value="planner_output" />
+		<arg name="domain_path"          value="$(arg domain_path)" />
+		<arg name="problem_path"         value="$(find rosplan_demos)/common/problem.rddl" />
+		<arg name="data_path"            value="$(find rosplan_demos)/common/" />
+		<arg name="planner_command"      value="$(find rosplan_planning_system)/common/bin/prost/run_prost_online.sh $(find rosplan_demos)/common/wildfire_mdp.rddl $(find rosplan_demos)/common/wildfire_inst_mdp__1.rddl &quot;[PROST -s 1 -se [IPPC2014]]&quot;" />
+	</include>-->
+	
+</launch>
