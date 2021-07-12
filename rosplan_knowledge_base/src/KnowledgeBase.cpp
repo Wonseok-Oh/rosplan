@@ -650,8 +650,8 @@ int main(int argc, char **argv) {
             ROS_ERROR("KCL: (%s) Unexpected domain file extension %s (expected PDDL/RDDL)", ros::this_node::getName().c_str(), extension.c_str());
             ros::shutdown();
         }
-
-	KCL_rosplan::KnowledgeBasePtr kb = KCL_rosplan::KnowledgeBaseFactory::createKB(kb_type, n);
+	int process_num = atoi(argv[1]);
+	KCL_rosplan::KnowledgeBasePtr kb = KCL_rosplan::KnowledgeBaseFactory::createKB(kb_type, n, process_num);
 
 	// parse domain
         kb->parseDomain(domainPath, problemPath);

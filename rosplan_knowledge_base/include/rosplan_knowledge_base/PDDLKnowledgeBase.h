@@ -49,7 +49,7 @@ namespace KCL_rosplan {
         ros::Subscriber m_reset_processor; // getInstances
 
 	public:
-		PDDLKnowledgeBase(ros::NodeHandle& n) : KnowledgeBase(n) {
+		PDDLKnowledgeBase(ros::NodeHandle& n, int process_num = 0) : KnowledgeBase(n) {
 			m_reset_processor = _nh.subscribe<rosplan_knowledge_msgs::processReset>("reset", 1, &PDDLKnowledgeBase::processReset, this);
 		};
 		~PDDLKnowledgeBase() = default;

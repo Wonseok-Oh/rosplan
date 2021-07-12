@@ -155,13 +155,14 @@ namespace KCL_rosplan {
 
 		ros::init(argc,argv,"rosplan_plan_parser");
 		ros::NodeHandle nh("~");
+		ros::NodeHandle nh_;
 
 		KCL_rosplan::PDDLSimplePlanParser pp(nh);
 	
 		// subscribe to planner output
 		std::string planTopic = "planner_output";
 		nh.getParam("planner_topic", planTopic);
-		ros::Subscriber plan_sub = nh.subscribe(planTopic, 1, &KCL_rosplan::PlanParser::plannerCallback, dynamic_cast<KCL_rosplan::PlanParser*>(&pp));
+		ros::Subscriber plan_sub = nh_.subscribe(planTopic, 1, &KCL_rosplan::PlanParser::plannerCallback, dynamic_cast<KCL_rosplan::PlanParser*>(&pp));
 	
 		// start the plan parsing services
 		ros::ServiceServer service1 = nh.advertiseService("parse_plan", &KCL_rosplan::PlanParser::parsePlan, dynamic_cast<KCL_rosplan::PlanParser*>(&pp));

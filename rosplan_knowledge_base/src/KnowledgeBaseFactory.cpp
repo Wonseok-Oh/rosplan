@@ -6,8 +6,8 @@
 
 namespace KCL_rosplan {
     std::unique_ptr<KCL_rosplan::KnowledgeBase>
-    KnowledgeBaseFactory::createKB(KCL_rosplan::KnowledgeBaseFactory::KB kb_type, ros::NodeHandle& n) {
-        if (kb_type == KB::PDDL) return KnowledgeBasePtr(new PDDLKnowledgeBase(n));
+    KnowledgeBaseFactory::createKB(KCL_rosplan::KnowledgeBaseFactory::KB kb_type, ros::NodeHandle& n, int process_num = 0) {
+        if (kb_type == KB::PDDL) return KnowledgeBasePtr(new PDDLKnowledgeBase(n, process_num));
         else if (kb_type == KB::PPDDL) return KnowledgeBasePtr(new PPDDLKnowledgeBase(n));
         else if (kb_type == KB::RDDL) return KnowledgeBasePtr(new RDDLKnowledgeBase(n));
         else {

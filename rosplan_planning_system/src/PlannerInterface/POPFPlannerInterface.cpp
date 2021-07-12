@@ -119,13 +119,15 @@ namespace KCL_rosplan {
 
 		ros::init(argc,argv,"rosplan_planner_interface");
 		ros::NodeHandle nh("~");
+		ros::NodeHandle nh_;
 
 		KCL_rosplan::POPFPlannerInterface pi(nh);
 		
 		// subscribe to problem instance
 		std::string problemTopic = "problem_instance";
 		nh.getParam("problem_topic", problemTopic);
-		ros::Subscriber problem_sub = nh.subscribe(problemTopic, 1, &KCL_rosplan::PlannerInterface::problemCallback, dynamic_cast<KCL_rosplan::PlannerInterface*>(&pi));
+		std::cout << problemTopic << std::endl;
+		ros::Subscriber problem_sub = nh_.subscribe(problemTopic, 1, &KCL_rosplan::PlannerInterface::problemCallback, dynamic_cast<KCL_rosplan::PlannerInterface*>(&pi));
 
 		// start the planning services
 		ros::ServiceServer service1 = nh.advertiseService("planning_server", &KCL_rosplan::PlannerInterface::runPlanningServerDefault, dynamic_cast<KCL_rosplan::PlannerInterface*>(&pi));
